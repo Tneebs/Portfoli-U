@@ -1,0 +1,2 @@
+class SwimLanesController < ApplicationController
+end
