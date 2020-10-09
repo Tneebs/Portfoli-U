@@ -36,3 +36,30 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+/* Header */ 
+
+.navbar {
+  border-bottom: 1px solid #dadada;
+}
+
+.navbar-logo {
+  display: flex;
+  margin-left: 1%;
+}
+
+.navbar-routes {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar-routes-buttons {
+  background-color: #e5e0e9
+  
+}
+
+.profile-display {
+  border-bottom: 1px solid #dadada;
+}

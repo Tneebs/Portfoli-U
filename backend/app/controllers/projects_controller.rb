@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
         if @project.save
             render :json => @project.as_json(only: [:id, :title]), :status => :ok
         else 
-            render :json => { :msg => 'Movie was not added' }, :status => :bad_request
+            render :json => { :msg => 'Project was not created' }, :status => :bad_request
         end
     end
 
