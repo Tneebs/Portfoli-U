@@ -60,6 +60,64 @@
   
 }
 
+
+/* Profile Page */
+
 .profile-display {
   border-bottom: 1px solid #dadada;
+}
+
+.profile-display-stats {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.profile-form-stats {
+  display: flex;
+}
+
+.form-stats {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-age {
+  padding-bottom: 10%; 
+  padding-left: 25%;
+}
+
+.form-email {
+  padding-bottom: 10%; 
+  padding-left: 25%;
+}
+
+.form-phone {
+  padding-bottom: 10%;
+  padding-left: 25%;
+}
+
+.form-skill {
+  padding-bottom: 10%; 
+  padding-left: 25%;
+}
+
+.form-work {
+  padding-bottom: 10%;
+  padding-left: 25%;
+}
+
+.form-education {
+  padding-bottom: 10%; 
+  padding-left: 25%;
+}
+
+.form-submit {
+  padding-left: 50%;
+}
+
+.edit-profile-btn {
+  padding-left: 7%;
 }
