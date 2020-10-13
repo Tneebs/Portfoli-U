@@ -6,7 +6,8 @@ class Login extends React.Component {
 
   state = {
     username: '',
-    password: ''
+    password: '',
+    current_user: ''
   }
 
   handleInputChange = (e) => {
@@ -34,6 +35,12 @@ class Login extends React.Component {
     .then(token => {
         console.log(token)
       localStorage.setItem('auth_key',token['auth_key'])
+      localStorage.setItem('user',token['user'])
+      this.setState({
+          current_user: token['user']
+      })
+      console.log(this.state.current_user)
+      this.props.handleCurrentUser(this.state.current_user)
       this.props.handleLogin()
       this.props.history.push('/')
     })

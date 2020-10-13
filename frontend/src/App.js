@@ -12,11 +12,15 @@ import {
   Redirect
 } from 'react-router-dom';
 
+let current_user = ''
+
 class App extends React.Component {
 
   state = {
-    isLoggedIn: false
+    isLoggedIn: false,
+    current_user: ''
   }
+
 
   componentDidMount() {
     if(localStorage.getItem('auth_key')){
@@ -24,6 +28,12 @@ class App extends React.Component {
         isLoggedIn: true
       })
     }
+  }
+
+  handleCurrentUser = (current_user) => {
+    this.setState({
+      current_user: current_user
+    })
   }
 
   handleLogin = () => {
@@ -46,14 +56,14 @@ class App extends React.Component {
 
           <Route exact path='/' component={() => {
             if(localStorage.getItem('auth_key')){
-              return <ProfilePage isLoggedIn={this.state.isLoggedIn} />
+              return <ProfilePage currentUser={this.state.current_user} isLoggedIn={this.state.isLoggedIn} />
             } else {
               return <Redirect to='/login' />
             }
           }} />
 
           <Route path='/login' component={() => {
-            return <Login handleLogin={this.handleLogin} />
+            return <Login handleCurrentUser={this.handleCurrentUser} handleLogin={this.handleLogin} />
           }} />
 
           <Route path='/signup' component={SignUp} />

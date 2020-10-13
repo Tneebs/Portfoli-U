@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
             payload = { user_id: @user.id }
             token = JWT.encode(payload,ENV['CRYPT_KEY'], 'HS256')
-            render :json => { auth_key: token }
+            render :json => { auth_key: token, user: @user }
         else
             render :json => { :msg => 'Hmmm... Are you sure you typed that right?'}
         end

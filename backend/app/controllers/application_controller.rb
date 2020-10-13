@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
         begin
             user_id = JWT.decode(token,ENV['CRYPT_KEY'])[0]['user_id']
             @user = User.find_by(id: user_id)
+            render :json => { user: @user }
         rescue
             nil
         end

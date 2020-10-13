@@ -1,25 +1,48 @@
 import React from 'react';
 import Project from './Project'
 
+import ImageUploader from 'react-images-upload';
+
 class ProfilePage extends React.Component {
 
-    state = {
-        name: '',
-        picture: '',
-        age: null,
-        email: '',
-        phone: '',
-        skill: '',
-        work: '',
-        education: ''
+    constructor(props) {
+        super(props);
+         this.state = { 
+            name: '',
+            pictures: [],
+            age: null,
+            email: '',
+            phone: '',
+            skill: '',
+            work: '',
+            education: 'test'
+        };
+
+         this.onDrop = this.onDrop.bind(this);
+    }
+
+    componentDidMount() {
+        console.log(this.props.currentUser)
+    }
+
+    onDrop(picture) {
+        this.setState({
+            pictures: this.state.pictures.concat(picture),
+        });
     }
 
     handleInputChange = e => {
+        console.log(e)
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
+    handlePictureUpdate = (e) => {
+        this.setState({
+            picture: `c:\fakepath\${e.target.value}`
+        })
+    }
 
 
     handleEditSubmit = (e) => {
@@ -36,7 +59,10 @@ class ProfilePage extends React.Component {
             education: this.state.education
         }
 
-        fetch('http://localhost:3000/users/${user.id}', {
+        let user = localStorage.getItem('user')
+        console.log(localStorage)
+
+        fetch(`http://localhost:3000/users/${this.props.current_user.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -63,9 +89,20 @@ class ProfilePage extends React.Component {
             <div className='profile-page'>
                 <div className='profile-display'>
 
-                    <div className='profile-name'>
-                        <p>Image tag for User's Profile Picture</p>
-                        <h1>User's name goes here</h1>
+                    <div className='profile-picture-uploader'>
+                        <ImageUploader
+                            withIcon={true}
+                            buttonText='Choose Image'
+                            onChange={this.onDrop}
+                            imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                            maxFileSize={5242880}
+                            accept="accept=image/*"
+                        />                    
+                    </div>
+
+                    <div className='profile-picture-name'>
+                        <img src={this.state.picture} />
+                        <h1>{this.props.currentUser.name}</h1>
                     </div>
 
                     <div className='profile-form-stats'>
@@ -98,7 +135,7 @@ class ProfilePage extends React.Component {
 
                             <div className='form-education'>
                                 <div>Education: </div>
-                                <input type='text' value={this.state.education} onChange={this.handleInputChange} name='education' placeholder={this.state.education} />
+                                <textarea type='text' value={this.state.education} onChange={this.handleInputChange} name='education' placeholder={this.state.education} />
                             </div>
 
                             <div className='form-submit'>
@@ -111,15 +148,33 @@ class ProfilePage extends React.Component {
 
 
                     <div className='profile-display-stats'>
-                        <ul>Age: {this.state.age}</ul>
-                        <ul>Email: {this.state.email}</ul>
-                        <ul>Phone Number: {this.state.phone}</ul>
-                        <ul>Skills: {this.state.skill}</ul>
-                        <ul>Work Experience: {this.state.work}</ul>
-                        <ul>Education: {this.state.education}</ul>
-                            <div className='edit-profile-btn'>
-                                <button>Edit Profile</button>
+
+                        <div className='profile-age' contenteditable='true' onChange={this.handleInputChange}>
+                            <ul>Age: {this.state.age}</ul>
+                        </div>
+
+                        <div className='profile-email' contenteditable='true' onChange={this.handleInputChange}>
+                            <ul>Email: {this.state.email}</ul>
+                        </div>
+
+                        <div className='profile-number' contenteditable='true' onChange={this.handleInputChange}>
+                            <ul>Phone Number: {this.state.phone}</ul>
+                        </div>
+
+                        <div className='profile-skill' contenteditable='true' onChange={this.handleInputChange}>
+                            <ul>Skills: {this.state.skill}</ul>
+                        </div>
+
+                        <div className='profile-work' contenteditable='true' onChange={this.handleInputChange}>
+                            <ul>Work Experience: {this.state.work}</ul>
+                        </div>
+
+                        <div className='profile-education'>
+                            <div><h3>Education: </h3></div>
+                            <div className='education-state'>
+                            <p contenteditable='true' name='education' value={this.state.education} onChange={(e) => this.handleInputChange(e)}>{this.state.education}</p>
                             </div>
+                        </div>
                     </div>
 
                 </div>
