@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
 
     def create
         @project = Project.new(project_params)
-        @project.user = current_user
+        UserProject.create(user_id: params[:user_id], project_id: @project.id)
 
         if @project.save
             render :json => @project.as_json(only: [:id, :title]), :status => :ok

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end 
 
     def show 
-        render :json => @user
+        render :json => { user: @user, projects: @user.projects }
         
     end
 
@@ -29,7 +29,10 @@ class UsersController < ApplicationController
     end
 
     def update
-        byebug
+        @user.update(user_params)
+        @user.save
+
+        render :json => @user 
     end
 
     def delete

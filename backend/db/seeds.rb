@@ -13,8 +13,8 @@ user4 = User.create(name: 'Scott')
 
 p1 = Project.create(title: 'Test Project')
 
-up1 = UserProject.create(user_id: user1.id, project_id: p1.id)
-up2 = UserProject.create(user_id: user2.id, project_id: p1.id)
+up1 = UserProject.create(user_id: 2, project_id: p1.id)
+up2 = UserProject.create(user_id: 3, project_id: p1.id)
 
 sl1 = SwimLane.create(title: 'backlog', project_id: p1.id)
 
