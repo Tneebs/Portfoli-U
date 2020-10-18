@@ -66,7 +66,7 @@ const Login = (props) => {
     return (
       <div className='login-form'>
 
-        <form className={classes.root} noValidate autoComplete="off" onSubmit={handleSubmit}>
+        <form className={classes.root} Validate autoComplete="off" onSubmit={handleSubmit}>
 
           <div className='login-display'><h2>Login</h2></div>
 

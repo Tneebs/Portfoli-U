@@ -3,7 +3,9 @@ import React from 'react'
 const ProjectCard = (props) => {
     return(
         <div className='project-card'>
-            {props.project.title}
+            <div className='project-details'>
+                {props.project.title}
+            </div>
         </div>
     )
 
