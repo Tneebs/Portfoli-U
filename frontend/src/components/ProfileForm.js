@@ -35,7 +35,7 @@ const ProfileForm = (props) => {
                 </div>
 
                 <div className='form-skill'>
-                    <TextField id="standard-basic" label="Skills" value={props.skill} onChange={(e) => props.handleInputChange(e)} name='skill' placeholder={props.skill}/>
+                    <TextField id="standard-basic" label="Skills" value={props.skill} onChange={(e) => props.handleInputChange(e)} type='textarea' name='skill' placeholder={props.skill}/>
                     {/* <textarea type='text' value={props.skill} onChange={(e) => props.handleInputChange(e)} name='skill' placeholder={props.skill} /> */}
                 </div>
 

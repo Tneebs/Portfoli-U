@@ -70,12 +70,12 @@ class App extends React.Component {
           }} />
 
           <Route exact path='/project' component={() => {
-                    if(localStorage.getItem('auth_key')){
-                    return <ProjectPage currentUser={this.props.current_user} isLoggedIn={this.props.isLoggedIn} />
-                    } else {
-                    return <Redirect to='/login' />
-                    }
-                }} />
+            if(localStorage.getItem('auth_key')){
+              return <ProjectPage currentUser={this.props.current_user} isLoggedIn={this.props.isLoggedIn} />
+            } else {
+              return <Redirect to='/login' />
+            }
+          }} />
 
           <Route path='/login' component={() => {
             return <Login username={this.state.username} password={this.state.password} current_user={this.state.current_user} handleCurrentUser={this.handleCurrentUser} handleLogin={this.handleLogin} handleSignIn={this.handleSignIn} />

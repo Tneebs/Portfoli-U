@@ -112,6 +112,27 @@ class ProfilePage extends React.Component {
          }))
     }
 
+    createProject = () => {
+
+    let userProject = {
+                title: '',
+                id: Number(localStorage.getItem('user'))
+        }
+
+        fetch(`http://localhost:3000/projects`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Auth-Key': localStorage.getItem('auth_key')
+            },
+            body: JSON.stringify(userProject)
+        })
+        .then(resp => resp.json())
+        .then(project => this.setState({
+            users_projects: project.users_projects
+        }))
+    }
+
 
 
     render() {
@@ -149,7 +170,7 @@ class ProfilePage extends React.Component {
 
                     <div className='project-container'>
                         <Link to='/project'>
-                            <button className='project-create-btn'>Create Project</button>
+                            <button className='project-create-btn' onClick={this.createProject}>Create Project</button>
                         </Link>
                         <div className='project-display'>
                             {this.state.users_projects.map(project => 

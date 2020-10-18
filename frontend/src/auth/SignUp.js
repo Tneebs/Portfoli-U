@@ -1,4 +1,16 @@
 import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
+
+const useStyles = theme => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  });
 
 class SignUp extends React.Component {
 
@@ -8,6 +20,7 @@ class SignUp extends React.Component {
         name: '',
         email: ''
     }
+
 
     handleInputChange = e => {
         this.setState({
@@ -37,56 +50,40 @@ class SignUp extends React.Component {
     }
 
     render() {
+        const { classes } = this.props;
         return(
-            <div className='limiter'>
-            <div className='container-login100'>
-            <div className={'wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55'}>
-              <form className={'login100-form validate-form flex-sb flex-w'} onSubmit={this.handleOnSubmit}>
-                <span className='login100-form-title p-b-32'>Signup</span>
-                <span className='txt1 p-b-11'>
-                  Username: 
-                </span>
-                <div className="wrap-input100 validate-input m-b-36" data-validate="Username is required">
-                <input className='input100'type="text" value={this.state.username} onChange={this.handleInputChange} name='username' placeholder='Username'/>
-                              <span className="focus-input100"></span>
-                          </div>
-                <span className='txt1 p-b-11'>
-                  Password: 
-                </span>
-                <div class="wrap-input100 validate-input m-b-12" data-validate="Password is required">
-                              <span class="btn-show-pass">
-                                  <i class="fa fa-eye"></i>
-                              </span>
-                  <input className='input100' type="password" value={this.state.password} onChange={this.handleInputChange} name='password' placeholder="Password"  />
-                              <span class="focus-input100"></span>
-                          </div>
-                          <span className='txt1 p-b-11'>
-                  Name: 
-                </span>
-                <div className="wrap-input100 validate-input m-b-36" data-validate="Name is required">
-                <input className='input100'type="text" value={this.state.name} onChange={this.handleInputChange} name='name' placeholder='Joe Doe'/>
-                              <span className="focus-input100"></span>
-                          </div>
-                          <span className='txt1 p-b-11'>
-                  Email: 
-                </span>
-                <div className="wrap-input100 validate-input m-b-36" data-validate="Email is required">
-                <input className='input100'type="text" value={this.state.email} onChange={this.handleInputChange} name='email' placeholder='example@mail.com'/>
-                              <span className="focus-input100"></span>
-                          </div>
+            <div className='signup-container'>
 
-                <div class="container-login100-form-btn">
-                              <button class="login100-form-btn" id="submit" type="submit" value="Submit">
-                                  SignUp!
-                              </button>
-                          </div>
+              <form className={'signup-form'} onSubmit={this.handleOnSubmit}>
+
+                <div className='signup-display'><h2>SignUp</h2></div>
+
+                <div className='signup-username'>
+                    <TextField id="standard-basic" label="Username" value={this.state.username} onChange={(e) => this.handleInputChange(e)} name='username' />
+                </div>
+
+                <div className='signup-password'>
+                    <TextField id="standard-basic" type='password' label="Password" value={this.state.password} onChange={(e) => this.handleInputChange(e)} name='password' />
+                </div>
+
+                <div className='signup-name'>
+                    <TextField id="standard-basic" label="Name" value={this.state.name} onChange={(e) => this.handleInputChange(e)} name='name' />
+                </div>
+
+                <div className='signup-email'>
+                    <TextField id="standard-basic" label="Email" value={this.state.email} onChange={(e) => this.handleInputChange(e)} name='email' />
+                </div>
+
+                <div className='signup-confirm-button'>
+                    <Button variant="outlined" type="submit" value="Submit">SignUp!</Button>
+                </div>
+
               </form>
-            </div>
-            </div>
             </div>
         )
     }
 }
 
-export default SignUp;
+
+export default withStyles(useStyles) (SignUp);
 
