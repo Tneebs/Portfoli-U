@@ -1,29 +1,52 @@
 import React from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button'
 
-class Task extends React.Component {
-    render() {
-        return(
-            <div className='task-form-card-title'>
+import TaskModal from './TaskModal'
 
-                <div className='task-create-btn'>
-                </div>
 
-                <div className='task-dlt-btn'>
-                </div>
-                
-            </div>,
+const useStyles = makeStyles((theme) => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: '25ch',
+      },
+    },
+  }));
 
-            <div className='task-modal-details'>
+// const handleModal = () => {
+//     <TaskModal /> // Creating an onClick to show a modal
+// }
 
-                <div className='task-modal-description'>
-                </div>
+const addTask = () => {
 
-                <div className='task-modal-comments'>
-                </div>
-
-            </div>
-        )
-    }
 }
+
+const removeTask = () => {
+
+}
+
+const Task = (props) => {
+    const classes = useStyles();
+        return(
+            <div>
+                <div className='task-display'>
+                    {props.tasks}
+                </div>
+            <TextField
+            id="outlined-basic"
+            variant='outlined'
+            label="New Task"
+            type="text"
+            name="task"
+            placeholder="New Task"
+          />
+          <Button size="large" color="primary" className="task-add-button">
+            +
+          </Button>
+          </div>
+        );
+};
 
 export default Task;

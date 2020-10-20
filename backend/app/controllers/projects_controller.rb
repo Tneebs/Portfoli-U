@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
         @project = Project.new(project_params)
 
         if @project.save
-            UserProject.create(user_id: params[:id], project_id: @project.id)
+            UserProject.create(user_id: params[:user_id], project_id: @project.id)
             render :json => @project.as_json(only: [:id, :title]), :status => :ok
         else 
             render :json => { :msg => 'Project was not created' }, :status => :bad_request
