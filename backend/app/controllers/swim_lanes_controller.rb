@@ -1,5 +1,5 @@
 class SwimLanesController < ApplicationController
-    before_action :find_swim_lane, only:[:show, :update]
+    before_action :find_swim_lane, only:[:show, :update, :destroy]
 
     def index
         @swim_lanes = SwimLane.all
@@ -19,14 +19,10 @@ class SwimLanesController < ApplicationController
     end
 
     def create
-        @swim_lane = SwimLane.new(swim_lane_params)
-        @swim_lane.project.user = current_user
+        @swim_lane = SwimLane.create(title: params[:title], project_id: params[:project_id])
 
-        if @swim_lane.save
-            render :json => @swim_lane.as_json(only: [:id, :title, :project_id]), :status => :ok
-        else 
-            render :json => { :msg => 'Project was not created' }, :status => :bad_request
-        end
+        render :json => @swim_lane
+
     end
 
     def edit
@@ -36,7 +32,10 @@ class SwimLanesController < ApplicationController
     def update
     end
 
-    def delete
+    def destroy
+        @swim_lane.tasks.each{|task| task.destroy}
+        @swim_lane.destroy
+        render :json => @swim_lane
     end
 
     private

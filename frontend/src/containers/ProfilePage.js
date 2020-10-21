@@ -35,7 +35,7 @@ class ProfilePage extends React.Component {
       work: "",
       education: "",
       users_projects: [],
-      isActive: true,
+      isActive: true
     };
 
     this.onDrop = this.onDrop.bind(this);
@@ -161,7 +161,7 @@ class ProfilePage extends React.Component {
         <div className="profile-page">
           <div className="profile-display">
               <h1>Profile Information</h1>
-            <div className="profile-picture-uploader">
+            {/* <div className="profile-picture-uploader">
               <ImageUploader
                 withIcon={true}
                 buttonText="Choose Image"
@@ -170,11 +170,11 @@ class ProfilePage extends React.Component {
                 maxFileSize={5242880}
                 accept="accept=image/*"
               />
-            </div>
+            </div> */}
 
             <div className="profile-picture-name">
               <img src={this.state.picture} />
-              <h2>Hello, {this.state.name}</h2>
+              <h2>Hello, {this.state.name}!</h2>
             </div>
 
             {!this.state.isActive ? (
@@ -223,7 +223,7 @@ class ProfilePage extends React.Component {
             </Button>
             <div className="project-display">
               {this.state.users_projects.map((project) => (
-                <ProjectCard project={project} handleInputChange={this.handleInputChange} /> // passing handleInputChange as props down to ProjectCard to pass to ProjectPage etc.
+                <ProjectCard project={project} handleInputChange={this.handleInputChange} toggle={this.toggleDetails} /> // passing handleInputChange as props down to ProjectCard to pass to ProjectPage etc.
               ))}
             </div>
           </div>

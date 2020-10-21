@@ -9,9 +9,10 @@ const Header = (props) => {
   return (
     <div className='navbar'>
       
-        <NavLogo />
-
         <NavLinks isLoggedIn={props.isLoggedIn} />
+
+        <NavLogo />
+        
     </div>
   )
 }

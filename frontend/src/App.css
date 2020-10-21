@@ -44,17 +44,19 @@
 
 .navbar {
   border-bottom: 1px solid #b6b6b62a;
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-logo {
   display: flex;
-  margin-left: 70%;
+  width: 25%;
+  margin: 16px 0px 16px 0px;
 }
 
 .navbar-routes {
   display: flex;
   justify-content: space-evenly;
-  margin-right: 90%;
 }
 
 .navbar-routes-buttons {
@@ -73,22 +75,23 @@
 
 .profile-display-stats {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: left;
+  width: 90%;
+  height: 240px;
+  margin: auto;
 }
 
 .profile-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding-left: 200px;
 }
 
 .profile-left {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-left: 30px;
 }
 
 .profile-form-right {
@@ -164,6 +167,10 @@
 
 /* Signup Page */
 
+.signup-container {
+  height: 88vh;
+}
+
 .signup-confirm-button {
   padding-top: 3%;
 }
@@ -223,6 +230,13 @@
 
 .logo {
   max-width: 80%;
-  padding-left: 80px;
 
+}
+
+.login-form {
+  height: 86vh;
+}
+
+.new-swim-lane {
+  width: 160px;
 }

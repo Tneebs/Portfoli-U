@@ -4,6 +4,8 @@ import SwimLane from "../components/SwimLane";
 import Button from "@material-ui/core/Button";
 import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
 
 const useStyles = (theme) => ({
   root: {
@@ -19,10 +21,11 @@ class ProjectPage extends React.Component {
     swimlanes: [],
     tasks: [],
     project: "",
+    newSwimLaneTitle: ''
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/projects/1")
+    fetch("http://localhost:3000/projects/7")
       .then((res) => res.json())
       .then((payload) =>
         this.setState({
@@ -36,11 +39,24 @@ class ProjectPage extends React.Component {
     console.log(this.state);
   };
 
-  addSwimLane = (addedSwimLane) => {
-    this.setState({
-      swimlanes: [...this.state.swimlanes, addedSwimLane],
-    });
-  };
+  addSwimLane = () => {
+    fetch(`http://localhost:3000/swim_lanes`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Auth-Key": localStorage.getItem("auth_key")
+        },
+        body: JSON.stringify({
+            title: this.state.newSwimLaneTitle,
+            project_id: this.state.project.id
+        })
+    })
+    .then(res => res.json())
+    .then(addedSwimLane => this.setState({
+        swimlanes: [...this.state.swimlanes, addedSwimLane]
+    }))
+}
+
 
   removeSwimLane = (selectedSwimLane) => {
     this.setState({
@@ -62,6 +78,13 @@ class ProjectPage extends React.Component {
     });
   };
 
+  handleInputChange = (e) => {
+    console.log(this.state.newSwimLaneTitle)
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -72,18 +95,28 @@ class ProjectPage extends React.Component {
           {this.state.swimlanes.map((swimlane) => (
             <SwimLane
               className="swimlane-scroll"
-              key={swimlane.id}
               swimlaneId={swimlane.id}
               swimlane={swimlane}
-              addSwimLane={this.props.addSwimLane}
-              removeSwimLane={this.props.removeSwimLane}
-              addTask={this.props.addTask}
-              removeTask={this.props.removeTask}
+              addSwimLane={this.addSwimLane}
+              removeSwimLane={this.removeSwimLane}
+              addTask={this.state.addTask}
+              removeTask={this.state.removeTask}
+            //   toggle={this.props.toggle}
             />
           ))}
         </div>
         <CardActions>
-        <Button size="large" color="primary" className="swimlane-add-button">
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          label="New SwimLane"
+          type="text"
+          name="newSwimLaneTitle"
+          placeholder="New SwimLane"
+          onChange={(e) => this.handleInputChange(e)}
+        />
+
+        <Button size="large" color="primary" className="swimlane-add-button" onClick={this.addSwimLane}>
           +
         </Button>
       </CardActions>
