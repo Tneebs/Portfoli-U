@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: rgba(235, 216, 165, 0.336);
 }
 
 .App-logo {
@@ -42,17 +43,18 @@
 /* Header */ 
 
 .navbar {
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #b6b6b62a;
 }
 
 .navbar-logo {
   display: flex;
-  margin-left: 1%;
+  margin-left: 70%;
 }
 
 .navbar-routes {
   display: flex;
   justify-content: space-evenly;
+  margin-right: 90%;
 }
 
 .navbar-routes-buttons {
@@ -64,13 +66,51 @@
 /* Profile Page */
 
 .profile-display {
-  border-bottom: 1px solid #dadada;
+  border-bottom: 1px solid #b6b6b62a;
+  padding: 20px 80px 40px 80px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .profile-display-stats {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
   text-align: left;
+}
+
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 200px;
+}
+
+.profile-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 30px;
+}
+
+.profile-form-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-form-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.profile-edit {
+  width: 100%;
+  padding-top: 16px;
+}
+
+.edit-profile-btn {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .profile-form-stats {
@@ -126,4 +166,63 @@
 
 .signup-confirm-button {
   padding-top: 3%;
+}
+
+.profile-title {
+  font-weight: bold;
+}
+
+.project-display {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 32px;
+}
+
+.project-container {
+  padding: 20px 80px 40px 80px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.project-details {
+  display: flex;
+  height: 100%;
+}
+
+.swimlane-card {
+  margin: 0px 16px 0px 16px;
+  overflow: scroll;
+}
+
+.project-card {
+  height: 70vh;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* .task-display {
+  width: 90%;
+  height: 40px;
+  margin: 8px 8px 24px 8px;
+  border: 1px solid #b6b6b6b2;
+  border-radius: 4px;
+  padding: 8px;
+} */
+
+.task-container {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 6px;
+}
+
+/* .swimlane-add-button {
+
+} */
+
+.swimlane-scroll {
+  overflow: scroll;
+}
+
+.logo {
+  max-width: 80%;
+  padding-left: 80px;
+
 }

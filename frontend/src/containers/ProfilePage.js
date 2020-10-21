@@ -10,6 +10,8 @@ import ImageUploader from "react-images-upload";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
+
 
 const useStyles = (theme) => ({
   root: {
@@ -53,6 +55,7 @@ class ProfilePage extends React.Component {
       // .then(update => console.log(update.projects[0]))
       .then((update) =>
         this.setState({
+          name: update.user.name,
           picture: update.user.picture,
           age: update.user.age,
           email: update.user.email,
@@ -142,9 +145,14 @@ class ProfilePage extends React.Component {
       .then((project) =>
         this.setState({
           users_projects: project.users_projects,
-        })
+        }),
+        this.props.history.push("/project")
       );
   };
+
+  handleProjectShow = () => {
+      
+  }
 
   render() {
     const { classes } = this.props;
@@ -152,6 +160,7 @@ class ProfilePage extends React.Component {
       <div>
         <div className="profile-page">
           <div className="profile-display">
+              <h1>Profile Information</h1>
             <div className="profile-picture-uploader">
               <ImageUploader
                 withIcon={true}
@@ -165,7 +174,7 @@ class ProfilePage extends React.Component {
 
             <div className="profile-picture-name">
               <img src={this.state.picture} />
-              <h1>{this.state.name}</h1>
+              <h2>Hello, {this.state.name}</h2>
             </div>
 
             {!this.state.isActive ? (
@@ -204,6 +213,7 @@ class ProfilePage extends React.Component {
           </div>
 
           <div className="project-container">
+              <h1>Projects</h1>
             <Button
               variant="outlined"
               className="project-create-btn"
@@ -223,4 +233,4 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default withStyles(useStyles)(ProfilePage);
+export default  withStyles(useStyles)(withRouter(ProfilePage));

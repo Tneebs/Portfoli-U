@@ -1,9 +1,10 @@
 import React from 'react'
+import images from './PortfoliU_smaller.png'
 
 const NavLogo = () => {
     return(
         <div className='navbar-logo'>
-          <h1>Portfoli-Ü</h1>
+          <img src={images} alt='Logo' className='logo'/>
         </div>
     )
 }
