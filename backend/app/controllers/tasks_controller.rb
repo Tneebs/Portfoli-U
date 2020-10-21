@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :find_task, only:[:show, :update]
+    before_action :find_task, only:[:show, :update, :destroy]
 
     def index
         @tasks = Task.all
@@ -18,14 +18,16 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(task_params)
-        @task.swim_lane.project.user = current_user
 
-        if @task.save
-            render :json => @task.as_json(only: [:id, :title, :description, :label, :comment, :log, :checklist, :swim_lane_id]), :status => :ok
-        else 
-            render :json => { :msg => 'Task was not created' }, :status => :bad_request
-        end
+        @task = Task.create(title: params[:title], swim_lane_id: params[:swim_lane_id])
+
+
+        render :json => @task
+        # if @task.save
+        #     render :json => @task.as_json(only: [:id, :title, :description, :label, :comment, :log, :checklist, :swim_lane_id]), :status => :ok
+        # else 
+        #     render :json => { :msg => 'Task was not created' }, :status => :bad_request
+        # end
     end
 
     def edit
@@ -35,13 +37,15 @@ class TasksController < ApplicationController
     def update
     end
 
-    def delete
+    def destroy
+        @task.destroy
+        render :json => @task
     end
 
     private
 
     def task_params
-        params.require(:task).permit(:title, :description, :label, :comment, :log, :checklist, :swim_lane_id)
+        params.require(:task).permit(:title, :swim_lane_id)
     end
 
     def find_task

@@ -27,7 +27,7 @@ const useStyles = makeStyles({
 });
 
 // const handleProjectShow = (props) => {
-//   <ProjectPage handleInputChange={props.handleInputChange} /> // pulling props down to Task
+//   <ProjectPage handleInputChange={props.handleInputChange} toggle={props.toggle} /> // pulling props down to Task
 // };
 
 // const removeProject = () => {  // onClick for the card or a button to delete the project frontend and backend

@@ -30,6 +30,22 @@ const useStyles = makeStyles({
 // }
 
 const Task = (props) => {
+
+    const handleRemoveTask = () => {
+        fetch(`http://localhost:3000/tasks/${props.taskId}`, {
+          method: 'DELETE',
+          headers: {
+            "Content-Type": "application/json",
+            "Auth-Key": localStorage.getItem("auth_key")
+        }})
+        .then(res => res.json())
+        .then(deletedTask => console.log(deletedTask))
+    
+        props.removeTask(props.task)
+    }
+
+    
+
   const classes = useStyles();
   return (
     <div className="task-container">
@@ -45,7 +61,7 @@ const Task = (props) => {
         </CardContent>
       </Card>
       <CardActions>
-          <Button size="large" color="secondary" className="task-dlt-button" > 
+          <Button size="large" color="secondary" className="task-dlt-button" onClick={() => handleRemoveTask()}> 
             -
           </Button>
         </CardActions>
@@ -55,5 +71,4 @@ const Task = (props) => {
 
 export default Task;
 
-// set onClick for + Button with addTask from props
 // set onClick for - Button with removeTask from props
