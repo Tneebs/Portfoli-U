@@ -1,52 +1,59 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+import React from "react";
+import Button from "@material-ui/core/Button";
+import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 
-import TaskModal from './TaskModal'
+import TaskModal from "./TaskModal";
 
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& .MuiTextField-root': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }));
+const useStyles = makeStyles({
+  root: {
+    minWidth: 200,
+  },
+  bullet: {
+    display: "inline-block",
+    margin: "0 2px",
+    transform: "scale(0.8)",
+  },
+  title: {
+    fontSize: 14,
+  },
+  pos: {
+    marginBottom: 12,
+  },
+});
 
 // const handleModal = () => {
 //     <TaskModal /> // Creating an onClick to show a modal
 // }
 
-const addTask = () => {
-
-}
-
-const removeTask = () => {
-
-}
-
 const Task = (props) => {
-    const classes = useStyles();
-        return(
-            <div>
-                <div className='task-display'>
-                    {props.tasks}
-                </div>
-            <TextField
-            id="outlined-basic"
-            variant='outlined'
-            label="New Task"
-            type="text"
-            name="task"
-            placeholder="New Task"
-          />
-          <Button size="large" color="primary" className="task-add-button">
-            +
+  const classes = useStyles();
+  return (
+    <div className="task-container">
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography
+            className={classes.title}
+            color="textPrimary"
+            gutterBottom
+          >
+            {props.task.title}
+          </Typography>
+        </CardContent>
+      </Card>
+      <CardActions>
+          <Button size="large" color="secondary" className="task-dlt-button" > 
+            -
           </Button>
-          </div>
-        );
+        </CardActions>
+    </div>
+  );
 };
 
 export default Task;
+
+// set onClick for + Button with addTask from props
+// set onClick for - Button with removeTask from props

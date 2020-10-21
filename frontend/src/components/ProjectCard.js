@@ -11,7 +11,7 @@ import ProjectPage from '../containers/ProjectPage'
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 200,
   },
   bullet: {
     display: "inline-block",
@@ -30,6 +30,10 @@ const useStyles = makeStyles({
 //   <ProjectPage handleInputChange={props.handleInputChange} /> // pulling props down to Task
 // };
 
+// const removeProject = () => {  // onClick for the card or a button to delete the project frontend and backend
+
+// }
+
 const ProjectCard = (props) => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
@@ -39,7 +43,7 @@ const ProjectCard = (props) => {
       <CardContent>
         <Typography
           className={classes.title}
-          color="textSecondary"
+          color="textPrimary"
           gutterBottom
         >
           {props.project.title}

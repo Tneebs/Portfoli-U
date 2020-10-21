@@ -18,72 +18,76 @@ const ProfileForm = (props) => {
   return (
     <div className="profile-form-stats">
       <form className={classes.root} noValidate autoComplete="off">
-        <div className="form-stats">
-          <div className="form-age">
-            <TextField
-              id="standard-basic"
-              label="Age"
-              value={props.age}
-              onChange={(e) => props.handleInputChange(e)}
-              name="age"
-              placeholder={props.age}
-            />
+
+          <div className="profile-form-left">
+            <div className="form-age">
+              <TextField
+                id="standard-basic"
+                label="Age"
+                value={props.age}
+                onChange={(e) => props.handleInputChange(e)}
+                name="age"
+                placeholder={props.age}
+              />
+            </div>
+
+            <div className="form-email">
+              <TextField
+                id="standard-basic"
+                label="Email"
+                value={props.email}
+                onChange={(e) => props.handleInputChange(e)}
+                name="email"
+                placeholder={props.email}
+              />
+            </div>
+
+            <div className="form-phone">
+              <TextField
+                id="standard-basic"
+                label="Phone Number"
+                value={props.phone}
+                onChange={(e) => props.handleInputChange(e)}
+                name="phone"
+                placeholder={props.phone}
+              />
+            </div>
           </div>
 
-          <div className="form-email">
-            <TextField
-              id="standard-basic"
-              label="Email"
-              value={props.email}
-              onChange={(e) => props.handleInputChange(e)}
-              name="email"
-              placeholder={props.email}
-            />
-          </div>
+          <div className='profile-form-right'>
+            <div className="form-skill">
+              <TextField
+                id="standard-basic"
+                label="Skills"
+                value={props.skill}
+                onChange={(e) => props.handleInputChange(e)}
+                type="textarea"
+                name="skill"
+                placeholder={props.skill}
+              />
+            </div>
 
-          <div className="form-phone">
-            <TextField
-              id="standard-basic"
-              label="Phone Number"
-              value={props.phone}
-              onChange={(e) => props.handleInputChange(e)}
-              name="phone"
-              placeholder={props.phone}
-            />
-          </div>
+            <div className="form-work">
+              <TextField
+                id="standard-basic"
+                label="Work Experience"
+                value={props.work}
+                onChange={(e) => props.handleInputChange(e)}
+                name="work"
+                placeholder={props.work}
+              />
+            </div>
 
-          <div className="form-skill">
-            <TextField
-              id="standard-basic"
-              label="Skills"
-              value={props.skill}
-              onChange={(e) => props.handleInputChange(e)}
-              type="textarea"
-              name="skill"
-              placeholder={props.skill}
-            />
-          </div>
-
-          <div className="form-work">
-            <TextField
-              id="standard-basic"
-              label="Work Experience"
-              value={props.work}
-              onChange={(e) => props.handleInputChange(e)}
-              name="work"
-              placeholder={props.work}
-            />
-          </div>
-
-          <div className="form-education">
-            <TextField
-              id="standard-basic"
-              label="Education"
-              value={props.education}
-              onChange={(e) => props.handleInputChange(e)}
-              name="education"
-              placeholder={props.education}
-            />
+            <div className="form-education">
+              <TextField
+                id="standard-basic"
+                label="Education"
+                value={props.education}
+                onChange={(e) => props.handleInputChange(e)}
+                name="education"
+                placeholder={props.education}
+              />
+            </div>
           </div>
 
           <div className="form-submit">
@@ -97,7 +101,7 @@ const ProfileForm = (props) => {
               Confirm
             </Button>
           </div>
-        </div>
+
       </form>
     </div>
   );

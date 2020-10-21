@@ -14,8 +14,8 @@ class ProjectsController < ApplicationController
     end 
 
     def show 
-
-        render :json => @project
+        @project_swimlanes = @project.swim_lanes
+        render :json => { project: @project, project_swimlanes: @project_swimlanes }
         
     end
 

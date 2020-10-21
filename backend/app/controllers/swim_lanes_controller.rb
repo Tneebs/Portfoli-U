@@ -8,8 +8,9 @@ class SwimLanesController < ApplicationController
     end 
 
     def show 
-
-        render :json => @swim_lanes
+        swimlane_tasks = @swim_lane.tasks
+        payload = { swim_lane: @swim_lane, swimlane_tasks: swimlane_tasks }
+        render :json => payload
         
     end
 

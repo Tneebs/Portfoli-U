@@ -5,6 +5,7 @@ import SignUp from '../auth/SignUp'
 import Header from './Header'
 import ProfilePage from './ProfilePage'
 import ProjectPage from './ProjectPage'
+import 'fontsource-roboto';
 
 import {
   BrowserRouter,
