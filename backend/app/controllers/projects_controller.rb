@@ -1,7 +1,7 @@
 require 'uri'
 
 class ProjectsController < ApplicationController
-    before_action :find_project, only:[:show, :update]
+    before_action :find_project, only:[:show, :update, :destroy]
 
 
     def index
@@ -43,12 +43,10 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        if @project.user == current_user
-            @project.destroy
-            render :json => { :msg => 'Project was removed' }, :status => :ok
-        else
-            render :json => { :msg => "No no no, you can't do that" }, :status => :ok
-        end
+        @project.user_projects.each{|up| up.destroy}
+        @project.swim_lanes.each{|swimlane| swimlane.destroy}
+        @project.destroy
+        render :json => @project
     end
 
     private

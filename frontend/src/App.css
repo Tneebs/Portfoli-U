@@ -82,6 +82,15 @@
   margin: auto;
 }
 
+.profile-form-stats {
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  width: 90%;
+  height: 240px;
+  margin: auto;
+}
+
 .profile-right {
   display: flex;
   flex-direction: column;
@@ -114,10 +123,6 @@
 .edit-profile-btn {
   display: flex;
   justify-content: flex-start;
-}
-
-.profile-form-stats {
-  display: flex;
 }
 
 .form-stats {

@@ -12,7 +12,6 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
-
 const useStyles = (theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -35,7 +34,8 @@ class ProfilePage extends React.Component {
       work: "",
       education: "",
       users_projects: [],
-      isActive: true
+      isActive: true,
+      //   project: ''
     };
 
     this.onDrop = this.onDrop.bind(this);
@@ -65,7 +65,9 @@ class ProfilePage extends React.Component {
           education: update.user.education,
           users_projects: update.projects,
         })
-      );
+      )
+      .then(console.log(this.state.users_projects))
+
   }
 
   onDrop(picture) {
@@ -142,17 +144,26 @@ class ProfilePage extends React.Component {
       body: JSON.stringify(userProject),
     })
       .then((resp) => resp.json())
-      .then((project) =>
-        this.setState({
-          users_projects: project.users_projects,
-        }),
+      .then(
+        (project) =>
+          this.setState({
+            users_projects: project.users_projects,
+          }),
         this.props.history.push("/project")
       );
   };
 
-  handleProjectShow = () => {
-      
-  }
+  removeProject = (selectedProject) => {
+    this.setState({
+      users_projects: this.state.users_projects.filter(
+        (project) => project !== selectedProject
+      ),
+    });
+  };
+
+    handleProjectShow = () => { 
+        this.props.setCurrentProject()
+    }
 
   render() {
     const { classes } = this.props;
@@ -160,7 +171,7 @@ class ProfilePage extends React.Component {
       <div>
         <div className="profile-page">
           <div className="profile-display">
-              <h1>Profile Information</h1>
+            <h1>Profile Information</h1>
             {/* <div className="profile-picture-uploader">
               <ImageUploader
                 withIcon={true}
@@ -213,7 +224,7 @@ class ProfilePage extends React.Component {
           </div>
 
           <div className="project-container">
-              <h1>Projects</h1>
+            <h1>Projects</h1>
             <Button
               variant="outlined"
               className="project-create-btn"
@@ -223,7 +234,14 @@ class ProfilePage extends React.Component {
             </Button>
             <div className="project-display">
               {this.state.users_projects.map((project) => (
-                <ProjectCard project={project} handleInputChange={this.handleInputChange} toggle={this.toggleDetails} /> // passing handleInputChange as props down to ProjectCard to pass to ProjectPage etc.
+                <ProjectCard
+                  project={project}
+                  projectId={project.id}
+                  setCurrentProject={this.props.setCurrentProject}
+                  handleInputChange={this.handleInputChange}
+                  removeProject={this.removeProject}
+                  toggle={this.toggleDetails}
+                /> // passing handleInputChange as props down to ProjectCard to pass to ProjectPage etc.
               ))}
             </div>
           </div>
@@ -233,4 +251,4 @@ class ProfilePage extends React.Component {
   }
 }
 
-export default  withStyles(useStyles)(withRouter(ProfilePage));
+export default withStyles(useStyles)(withRouter(ProfilePage));

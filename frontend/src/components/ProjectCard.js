@@ -26,17 +26,33 @@ const useStyles = makeStyles({
   },
 });
 
-// const handleProjectShow = (props) => {
-//   <ProjectPage handleInputChange={props.handleInputChange} toggle={props.toggle} /> // pulling props down to Task
-// };
 
-// const removeProject = () => {  // onClick for the card or a button to delete the project frontend and backend
+// const removeProject = () => {  // onClick for a button to delete the project frontend and backend
 
 // }
 
 const ProjectCard = (props) => {
+
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+
+  const handleRemoveProject = () => {
+    fetch(`http://localhost:3000/projects/${props.projectId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        "Auth-Key": localStorage.getItem("auth_key")
+    }})
+    .then(res => res.json())
+    .then(deletedProject => console.log(deletedProject))
+
+    props.removeProject(props.project)
+  };
+
+  const handleProjectShow = (props) => {
+    // <Link to={`/projects/${props.projectId}`} />
+    props.history.push(`/projects/${props.projectId}`)
+};
 
   return (
     <Card className={classes.root}>
@@ -50,7 +66,10 @@ const ProjectCard = (props) => {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={handleProjectShow}>Learn More</Button>
+      </CardActions>
+      <CardActions>
+        <Button size="small" color="secondary" onClick={handleRemoveProject}>☓</Button>
       </CardActions>
     </Card>
   );
