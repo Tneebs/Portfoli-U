@@ -7,6 +7,8 @@ import ProfilePage from "./ProfilePage";
 import ProjectPage from "./ProjectPage";
 import "fontsource-roboto";
 
+
+// import history from './history'
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 
 class App extends React.Component {
@@ -15,13 +17,14 @@ class App extends React.Component {
     current_user: "",
     username: "",
     password: "",
-    currentProjectId: 7,
+    currentProjectId: 1,
+    currentProject: ''
   };
 
   componentDidMount() {
     if (localStorage.getItem("auth_key")) {
       this.setState({
-        isLoggedIn: true,
+        isLoggedIn: true
       });
     }
   }
@@ -47,9 +50,10 @@ class App extends React.Component {
     }
   };
 
-  setCurrentProject = (projectId) => {
+  setCurrentProject = (project) => {
     this.setState({
-      currentProjectId: projectId,
+      currentProjectId: project.id,
+      currentProject: project
     });
   };
 
@@ -85,6 +89,8 @@ class App extends React.Component {
                 if (localStorage.getItem("auth_key")) {
                   return (
                     <ProjectPage
+                      currentProject={this.state.currentProject}
+                      currentProjectId={this.state.currentProjectId}
                       currentUser={this.props.current_user}
                       isLoggedIn={this.props.isLoggedIn}
                     />

@@ -35,7 +35,7 @@ class ProfilePage extends React.Component {
       education: "",
       users_projects: [],
       isActive: true,
-      //   project: ''
+      currentProject: ''
     };
 
     this.onDrop = this.onDrop.bind(this);
@@ -144,14 +144,30 @@ class ProfilePage extends React.Component {
       body: JSON.stringify(userProject),
     })
       .then((resp) => resp.json())
-      .then(
-        (project) =>
-          this.setState({
-            users_projects: project.users_projects,
-          }),
-        this.props.history.push("/project")
-      );
+      .then(project => 
+        // this.setState({
+        //   currentProject: project
+        // }),
+          this.props.setCurrentProject(project)
+      )
+
+    //   .then(console.log(this.state.currentProject))
+    //   .then(this.props.setCurrentProject(this.state.currentProject))
+    //   .then(this.props.history.push(`/projects/${this.state.currentProject.id}`))
+    //   .then(
+    //     (project) =>
+    //       this.setState({
+    //         users_projects: project.users_projects,
+    //       }),
+    //     this.props.history.push("/project")
+    //   );
   };
+
+//   const handleProjectShow = () => {
+//     props.setCurrentProject(props.project)
+//     props.history.push(`/projects/${props.projectId}`)
+//     // console.log(props)
+// };
 
   removeProject = (selectedProject) => {
     this.setState({
@@ -228,7 +244,7 @@ class ProfilePage extends React.Component {
             <Button
               variant="outlined"
               className="project-create-btn"
-              onClick={this.createProject}
+              onClick={() => this.createProject()}
             >
               Create Project
             </Button>

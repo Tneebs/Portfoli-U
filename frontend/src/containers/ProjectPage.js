@@ -21,16 +21,20 @@ class ProjectPage extends React.Component {
     swimlanes: [],
     tasks: [],
     project: "",
-    newSwimLaneTitle: ''
+    newSwimLaneTitle: '',
+    projectTitle: ''
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/projects/7")
+
+    console.log(this.props.currentProjectId)
+
+    fetch(`http://localhost:3000/projects/${this.props.currentProjectId}`)
       .then((res) => res.json())
-      .then((payload) =>
-        this.setState({
+      .then((payload) => this.setState({
           swimlanes: payload.project_swimlanes,
           project: payload.project,
+        //   projectTitle: payload.project.title
         })
       );
   }
@@ -90,7 +94,7 @@ class ProjectPage extends React.Component {
     return (
       <div className="project-card">
         {this.checkSwimLanes()}
-        <h1>{this.state.project.title}</h1>
+        <h1>{this.state.projectTitle}</h1>
         <div className="project-details">
           {this.state.swimlanes.map((swimlane) => (
             <SwimLane
