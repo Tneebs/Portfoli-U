@@ -20,6 +20,10 @@ class SignUp extends React.Component {
     email: "",
   };
 
+  componentDidMount() {
+    console.log(this.props)
+  }
+
   handleInputChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

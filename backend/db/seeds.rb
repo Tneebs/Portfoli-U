@@ -12,9 +12,20 @@ user3 = User.create(name: 'Shivang')
 user4 = User.create(name: 'Scott')
 
 p1 = Project.create(title: 'Test Project')
+p2 = Project.create(title: 'Portfoli-U')
+p3 = Project.create(title: 'Tactics Lite')
+p4 = Project.create(title: 'MPloy!')
+p5 = Project.create(title: 'Armadillo Trading Co.')
+
 
 up1 = UserProject.create(user_id: 2, project_id: p1.id)
 up2 = UserProject.create(user_id: 3, project_id: p1.id)
+
+up3 = UserProject.create(user_id: 7, project_id: p2.id)
+up4 = UserProject.create(user_id: 7, project_id: p3.id)
+up5 = UserProject.create(user_id: 7, project_id: p4.id)
+up6 = UserProject.create(user_id: 7, project_id: p5.id)
+
 
 sl1 = SwimLane.create(title: 'backlog', project_id: p1.id)
 sl2 = SwimLane.create(title: 'in progress', project_id: p1.id)
@@ -39,3 +50,6 @@ t12 = Task.create(title: 'inch worm', swim_lane_id: sl4.id)
 t13 = Task.create(title: 'stone', swim_lane_id: sl5.id)
 t14 = Task.create(title: 'glass', swim_lane_id: sl5.id)
 t15 = Task.create(title: 'grass', swim_lane_id: sl5.id)
+
+
+

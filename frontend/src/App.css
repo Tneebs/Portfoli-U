@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  background-color: rgba(235, 216, 165, 0.336);
+  background-color: rgb(250, 241, 221);
+  background-size: cover;
 }
 
 .App-logo {
@@ -85,10 +86,21 @@
 .profile-form-stats {
   display: flex;
   justify-content: space-between;
-  text-align: left;
-  width: 90%;
-  height: 240px;
-  margin: auto;
+  width: 100%;
+}
+
+.profile-form-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.confirm-btn {
+  margin-left: 80px;
+}
+
+.makeStyles-root-18 {
+  width: 80%;
 }
 
 .profile-right {
@@ -197,17 +209,31 @@
 
 .project-details {
   display: flex;
-  height: 100%;
+  flex-direction: column;
+  height: 90vh;
+  overflow-x: scroll;
+  background-color: rgb(250, 241, 221);
+  background-size: cover;
+}
+
+.swimlane-map {
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 20px;
 }
 
 .swimlane-card {
   margin: 0px 16px 0px 16px;
-  overflow: scroll;
+  /* overflow: scroll; */
 }
 
 .project-card {
-  height: 70vh;
+  height: 75vh;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.swimlane-form-btn {
+  display: block;
 }
 
 /* .task-display {
@@ -230,7 +256,7 @@
 } */
 
 .swimlane-scroll {
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .logo {

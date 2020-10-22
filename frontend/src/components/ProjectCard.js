@@ -5,6 +5,8 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import { withRouter } from "react-router";
+
 
 import ProjectPage from '../containers/ProjectPage'
 
@@ -49,9 +51,10 @@ const ProjectCard = (props) => {
     props.removeProject(props.project)
   };
 
-  const handleProjectShow = (props) => {
-    // <Link to={`/projects/${props.projectId}`} />
+  const handleProjectShow = () => {
+    props.setCurrentProject(props.project)
     props.history.push(`/projects/${props.projectId}`)
+    // console.log(props)
 };
 
   return (
@@ -75,4 +78,4 @@ const ProjectCard = (props) => {
   );
 };
 
-export default ProjectCard;
+export default withRouter(ProjectCard);

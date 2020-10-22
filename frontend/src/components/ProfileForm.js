@@ -19,6 +19,7 @@ const ProfileForm = (props) => {
     <div className="profile-form-stats">
       <form className={classes.root} noValidate autoComplete="off">
 
+        <div className='profile-form-container'>
           <div className="profile-form-left">
             <div className="form-age">
               <TextField
@@ -89,9 +90,10 @@ const ProfileForm = (props) => {
               />
             </div>
           </div>
+          </div>
 
-          <div className="form-submit">
             <Button
+            className='confirm-btn'
               variant="outlined"
               onClick={(e) => {
                 props.handleEditSubmit(e);
@@ -100,7 +102,6 @@ const ProfileForm = (props) => {
             >
               Confirm
             </Button>
-          </div>
 
       </form>
     </div>

@@ -44,7 +44,7 @@ const NavLinks = (props) => {
               aria-haspopup="true"
               onClick={handleClick}
               >
-              Open Menu
+              Menu
               </Button>
 
               <Menu

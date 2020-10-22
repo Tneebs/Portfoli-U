@@ -6,7 +6,6 @@ import CardActions from "@material-ui/core/CardActions";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
-
 const useStyles = (theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -21,16 +20,20 @@ class ProjectPage extends React.Component {
     swimlanes: [],
     tasks: [],
     project: "",
-    newSwimLaneTitle: ''
+    newSwimLaneTitle: "",
+    projectTitle: "",
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/projects/7")
+    console.log(this.props.currentProjectId);
+
+    fetch(`http://localhost:3000/projects/${this.props.currentProjectId}`)
       .then((res) => res.json())
       .then((payload) =>
         this.setState({
           swimlanes: payload.project_swimlanes,
           project: payload.project,
+          //   projectTitle: payload.project.title
         })
       );
   }
@@ -41,22 +44,23 @@ class ProjectPage extends React.Component {
 
   addSwimLane = () => {
     fetch(`http://localhost:3000/swim_lanes`, {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
-            "Auth-Key": localStorage.getItem("auth_key")
-        },
-        body: JSON.stringify({
-            title: this.state.newSwimLaneTitle,
-            project_id: this.state.project.id
-        })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Auth-Key": localStorage.getItem("auth_key"),
+      },
+      body: JSON.stringify({
+        title: this.state.newSwimLaneTitle,
+        project_id: this.state.project.id,
+      }),
     })
-    .then(res => res.json())
-    .then(addedSwimLane => this.setState({
-        swimlanes: [...this.state.swimlanes, addedSwimLane]
-    }))
-}
-
+      .then((res) => res.json())
+      .then((addedSwimLane) =>
+        this.setState({
+          swimlanes: [...this.state.swimlanes, addedSwimLane],
+        })
+      );
+  };
 
   removeSwimLane = (selectedSwimLane) => {
     this.setState({
@@ -79,7 +83,7 @@ class ProjectPage extends React.Component {
   };
 
   handleInputChange = (e) => {
-    console.log(this.state.newSwimLaneTitle)
+    console.log(this.state.newSwimLaneTitle);
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -92,6 +96,29 @@ class ProjectPage extends React.Component {
         {this.checkSwimLanes()}
         <h1>{this.state.project.title}</h1>
         <div className="project-details">
+            <div className='swimlane-form-btn'>
+          <CardActions>
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              label="New SwimLane"
+              type="text"
+              name="newSwimLaneTitle"
+              placeholder="New SwimLane"
+              onChange={(e) => this.handleInputChange(e)}
+            />
+
+            <Button
+              size="large"
+              color="primary"
+              className="swimlane-add-button"
+              onClick={this.addSwimLane}
+            >
+              +
+            </Button>
+          </CardActions>
+          </div>
+          <div className='swimlane-map'>
           {this.state.swimlanes.map((swimlane) => (
             <SwimLane
               className="swimlane-scroll"
@@ -101,25 +128,11 @@ class ProjectPage extends React.Component {
               removeSwimLane={this.removeSwimLane}
               addTask={this.state.addTask}
               removeTask={this.state.removeTask}
-            //   toggle={this.props.toggle}
+              //   toggle={this.props.toggle}
             />
           ))}
+          </div>
         </div>
-        <CardActions>
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          label="New SwimLane"
-          type="text"
-          name="newSwimLaneTitle"
-          placeholder="New SwimLane"
-          onChange={(e) => this.handleInputChange(e)}
-        />
-
-        <Button size="large" color="primary" className="swimlane-add-button" onClick={this.addSwimLane}>
-          +
-        </Button>
-      </CardActions>
       </div>
     );
   }
