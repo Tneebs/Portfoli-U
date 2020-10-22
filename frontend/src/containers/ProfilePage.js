@@ -11,6 +11,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
+import TextField from "@material-ui/core/TextField";
+
 
 const useStyles = (theme) => ({
   root: {
@@ -35,7 +37,8 @@ class ProfilePage extends React.Component {
       education: "",
       users_projects: [],
       isActive: true,
-      currentProject: ''
+      currentProject: '',
+      newProjectTitle: ''
     };
 
     this.onDrop = this.onDrop.bind(this);
@@ -85,7 +88,7 @@ class ProfilePage extends React.Component {
   };
 
   handleInputChange = (e) => {
-    // console.log(e)
+    console.log(this.state.newProjectTitle)
     this.setState({
       [e.target.name]: e.target.value,
     });
@@ -129,11 +132,15 @@ class ProfilePage extends React.Component {
       );
   };
 
+  setProject = (project) => {
+    this.setState({
+        currentProject: project
+    })
+    this.props.setCurrentProject(project)
+    this.props.history.push(`/projects/${project.id}`)
+  }
+
   createProject = () => {
-    let userProject = {
-      title: "",
-      user_id: Number(localStorage.getItem("user")),
-    };
 
     fetch(`http://localhost:3000/projects`, {
       method: "POST",
@@ -141,33 +148,14 @@ class ProfilePage extends React.Component {
         "Content-Type": "application/json",
         "Auth-Key": localStorage.getItem("auth_key"),
       },
-      body: JSON.stringify(userProject),
+      body: JSON.stringify({
+        title: this.state.newProjectTitle,
+        user_id: Number(localStorage.getItem("user"))
+    }),
     })
       .then((resp) => resp.json())
-      .then(project => 
-        // this.setState({
-        //   currentProject: project
-        // }),
-          this.props.setCurrentProject(project)
-      )
-
-    //   .then(console.log(this.state.currentProject))
-    //   .then(this.props.setCurrentProject(this.state.currentProject))
-    //   .then(this.props.history.push(`/projects/${this.state.currentProject.id}`))
-    //   .then(
-    //     (project) =>
-    //       this.setState({
-    //         users_projects: project.users_projects,
-    //       }),
-    //     this.props.history.push("/project")
-    //   );
+      .then(project => this.setProject(project))
   };
-
-//   const handleProjectShow = () => {
-//     props.setCurrentProject(props.project)
-//     props.history.push(`/projects/${props.projectId}`)
-//     // console.log(props)
-// };
 
   removeProject = (selectedProject) => {
     this.setState({
@@ -248,6 +236,17 @@ class ProfilePage extends React.Component {
             >
               Create Project
             </Button>
+            <br></br>
+            <br></br>
+            <TextField
+              id="outlined-basic"
+              variant="outlined"
+              label="New Project"
+              type="text"
+              name="newProjectTitle"
+              placeholder="New Project Title"
+              onChange={(e) => this.handleInputChange(e)}
+            />
             <div className="project-display">
               {this.state.users_projects.map((project) => (
                 <ProjectCard
