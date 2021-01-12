@@ -44384,3 +44384,276 @@ Processing by UsersController#show as */*
 Completed 200 OK in 93ms (Views: 15.1ms | ActiveRecord: 74.6ms | Allocations: 2771)
 
 
+Started GET "/users/0" for ::1 at 2020-10-25 01:59:53 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"0", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+Completed 404 Not Found in 18ms (ActiveRecord: 22.7ms | Allocations: 1286)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=0):
+  
+app/controllers/users_controller.rb:48:in `find_user'
+Started GET "/users/0" for ::1 at 2020-10-25 01:59:53 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"0", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+Completed 404 Not Found in 6ms (ActiveRecord: 0.4ms | Allocations: 658)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=0):
+  
+app/controllers/users_controller.rb:48:in `find_user'
+Started POST "/login" for ::1 at 2020-10-25 02:00:17 -0500
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"TNeben", "password"=>"[FILTERED]", "session"=>{"username"=>"TNeben", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "TNeben"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.52ms)
+Completed 200 OK in 277ms (Views: 2.4ms | ActiveRecord: 0.5ms | Allocations: 9920)
+
+
+Started GET "/users/7" for ::1 at 2020-10-25 02:00:17 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers]   [1m[36mProject Load (2.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (28.32ms)
+Completed 200 OK in 59ms (Views: 19.5ms | ActiveRecord: 18.0ms | Allocations: 11364)
+
+
+Started GET "/users/7" for ::1 at 2020-10-25 02:00:17 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers]   [1m[36mProject Load (2.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (20.78ms)
+Completed 200 OK in 28ms (Views: 19.3ms | ActiveRecord: 5.3ms | Allocations: 2774)
+
+
+Started PATCH "/users/7" for ::1 at 2020-10-25 02:00:31 -0500
+Processing by UsersController#update as */*
+  Parameters: {"picture"=>nil, "age"=>"29", "email"=>"tedneben@gmail.com", "phone"=>"832-444-6613", "skill"=>"Ruby, Rails, SQL, Javascript, React, HTML, CSS, Photoshop, Postgres, Illustrator, Lightroom, and Final Cut Pro", "work"=>"WeSO - (Co-Owner of e-commerce drop shipping company)", "education"=>"Flatiron School - Software Engineer", "id"=>"7", "user"=>{"picture"=>nil, "age"=>"29", "email"=>"tedneben@gmail.com", "phone"=>"832-444-6613", "skill"=>"Ruby, Rails, SQL, Javascript, React, HTML, CSS, Photoshop, Postgres, Illustrator, Lightroom, and Final Cut Pro", "work"=>"WeSO - (Co-Owner of e-commerce drop shipping company)", "education"=>"Flatiron School - Software Engineer"}}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+  [1m[35m (8.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[36mUser Update (3.5ms)[0m  [1m[33mUPDATE "users" SET "age" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["age", 29], ["updated_at", "2020-10-25 07:00:31.495808"], ["id", 7]]
+  ↳ app/controllers/users_controller.rb:32:in `update'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32:in `update'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.34ms)
+Completed 200 OK in 30ms (Views: 1.4ms | ActiveRecord: 18.8ms | Allocations: 4271)
+
+
+Started GET "/projects/35" for ::1 at 2020-10-25 02:00:37 -0500
+Processing by ProjectsController#show as */*
+  Parameters: {"id"=>"35"}
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:59:in `find_project'
+[active_model_serializers]   [1m[36mSwimLane Load (1.0ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."project_id" = $1[0m  [["project_id", 35]]
+[active_model_serializers]   ↳ app/controllers/projects_controller.rb:18:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (32.08ms)
+Completed 200 OK in 41ms (Views: 17.1ms | ActiveRecord: 17.1ms | Allocations: 7463)
+
+
+Started GET "/swim_lanes/32" for ::1 at 2020-10-25 02:00:37 -0500
+Started GET "/swim_lanes/33" for ::1 at 2020-10-25 02:00:37 -0500
+Started GET "/swim_lanes/34" for ::1 at 2020-10-25 02:00:37 -0500
+Started GET "/swim_lanes/35" for ::1 at 2020-10-25 02:00:37 -0500
+Started GET "/swim_lanes/36" for ::1 at 2020-10-25 02:00:37 -0500
+Processing by SwimLanesController#show as */*
+  Parameters: {"id"=>"32"}
+  [1m[36mSwimLane Load (1.8ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/controllers/swim_lanes_controller.rb:48:in `find_swim_lane'
+[active_model_serializers]   [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."swim_lane_id" = $1[0m  [["swim_lane_id", 32]]
+[active_model_serializers]   ↳ app/controllers/swim_lanes_controller.rb:13:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (58.1ms)
+Completed 200 OK in 89ms (Views: 42.7ms | ActiveRecord: 18.4ms | Allocations: 10095)
+
+
+Processing by SwimLanesController#show as */*
+  Parameters: {"id"=>"33"}
+Processing by SwimLanesController#show as */*
+  Parameters: {"id"=>"35"}
+Processing by SwimLanesController#show as */*
+  [1m[36mSwimLane Load (3.7ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  Parameters: {"id"=>"36"}
+Processing by SwimLanesController#show as */*
+  ↳ app/controllers/swim_lanes_controller.rb:48:in `find_swim_lane'
+  Parameters: {"id"=>"34"}
+  [1m[36mSwimLane Load (4.9ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/swim_lanes_controller.rb:48:in `find_swim_lane'
+[active_model_serializers]   [1m[36mTask Load (4.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."swim_lane_id" = $1[0m  [["swim_lane_id", 33]]
+  [1m[36mSwimLane Load (4.3ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/swim_lanes_controller.rb:13:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (18.73ms)
+[active_model_serializers]   [1m[36mTask Load (9.8ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."swim_lane_id" = $1[0m  [["swim_lane_id", 35]]
+  ↳ app/controllers/swim_lanes_controller.rb:48:in `find_swim_lane'
+  [1m[36mSwimLane Load (3.6ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+Completed 200 OK in 40ms (Views: 15.3ms | ActiveRecord: 13.0ms | Allocations: 7133)
+
+
+[active_model_serializers]   ↳ app/controllers/swim_lanes_controller.rb:13:in `show'
+  ↳ app/controllers/swim_lanes_controller.rb:48:in `find_swim_lane'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (31.01ms)
+Completed 200 OK in 50ms (Views: 24.3ms | ActiveRecord: 16.2ms | Allocations: 7811)
+
+
+[active_model_serializers]   [1m[36mTask Load (23.6ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."swim_lane_id" = $1[0m  [["swim_lane_id", 36]]
+[active_model_serializers]   ↳ app/controllers/swim_lanes_controller.rb:13:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (57.58ms)
+[active_model_serializers]   [1m[36mTask Load (29.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."swim_lane_id" = $1[0m  [["swim_lane_id", 34]]
+[active_model_serializers]   ↳ app/controllers/swim_lanes_controller.rb:13:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (46.18ms)
+Completed 200 OK in 87ms (Views: 35.7ms | ActiveRecord: 32.5ms | Allocations: 8485)
+
+
+Completed 200 OK in 85ms (Views: 17.3ms | ActiveRecord: 36.2ms | Allocations: 9313)
+
+
+Started POST "/tasks" for ::1 at 2020-10-25 02:00:47 -0500
+Processing by TasksController#create as */*
+  Parameters: {"title"=>"LOOK AT MY PROJECT", "swim_lane_id"=>35, "task"=>{"title"=>"LOOK AT MY PROJECT", "swim_lane_id"=>35}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:22:in `create'
+  [1m[36mSwimLane Load (0.4ms)[0m  [1m[34mSELECT "swim_lanes".* FROM "swim_lanes" WHERE "swim_lanes"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:22:in `create'
+  [1m[36mTask Create (8.1ms)[0m  [1m[32mINSERT INTO "tasks" ("title", "swim_lane_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "LOOK AT MY PROJECT"], ["swim_lane_id", 35], ["created_at", "2020-10-25 07:00:47.543030"], ["updated_at", "2020-10-25 07:00:47.543030"]]
+  ↳ app/controllers/tasks_controller.rb:22:in `create'
+  [1m[35m (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:22:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Task (0.33ms)
+Completed 200 OK in 26ms (Views: 1.4ms | ActiveRecord: 15.5ms | Allocations: 4267)
+
+
+Started DELETE "/tasks/119" for ::1 at 2020-10-25 02:00:50 -0500
+Processing by TasksController#destroy as */*
+  Parameters: {"id"=>"119", "task"=>{}}
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."id" = $1 LIMIT $2[0m  [["id", 119], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:52:in `find_task'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:41:in `destroy'
+  [1m[36mTask Destroy (4.0ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 119]]
+  ↳ app/controllers/tasks_controller.rb:41:in `destroy'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:41:in `destroy'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Task (0.26ms)
+Completed 200 OK in 20ms (Views: 0.8ms | ActiveRecord: 6.4ms | Allocations: 2895)
+
+
+Started GET "/users/7" for ::1 at 2020-10-25 02:00:55 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (9.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers]   [1m[36mProject Load (1.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 7]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (13.78ms)
+Completed 200 OK in 30ms (Views: 13.0ms | ActiveRecord: 11.3ms | Allocations: 2792)
+
+
+Started POST "/login" for ::1 at 2020-12-16 12:52:24 -0600
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"Tneebs", "password"=>"[FILTERED]", "session"=>{"username"=>"Tneebs", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (17.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Tneebs"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 34ms (Views: 1.9ms | ActiveRecord: 20.1ms | Allocations: 4262)
+
+
+Started POST "/login" for ::1 at 2020-12-16 12:52:36 -0600
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"test", "password"=>"[FILTERED]", "session"=>{"username"=>"test", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 2.4ms | Allocations: 779)
+
+
+Started GET "/users/0" for ::1 at 2020-12-16 12:52:57 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"0", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+Completed 404 Not Found in 27ms (ActiveRecord: 24.1ms | Allocations: 860)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=0):
+  
+app/controllers/users_controller.rb:48:in `find_user'
+Started GET "/users/0" for ::1 at 2020-12-16 12:53:00 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"0", "user"=>{}}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+Completed 404 Not Found in 20ms (ActiveRecord: 2.4ms | Allocations: 683)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=0):
+  
+app/controllers/users_controller.rb:48:in `find_user'
+Started GET "/users/0" for ::1 at 2020-12-16 12:53:00 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"0", "user"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.8ms | Allocations: 658)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=0):
+  
+app/controllers/users_controller.rb:48:in `find_user'
+Started POST "/login" for ::1 at 2020-12-16 12:53:08 -0600
+Processing by SessionsController#create as */*
+  Parameters: {"username"=>"Ted", "password"=>"[FILTERED]", "session"=>{"username"=>"Ted", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Ted"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:4:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.79ms)
+Completed 200 OK in 268ms (Views: 1.5ms | ActiveRecord: 1.3ms | Allocations: 9325)
+
+
+Started GET "/users/1" for ::1 at 2020-12-16 12:53:08 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers]   [1m[36mProject Load (24.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (64.22ms)
+Completed 200 OK in 97ms (Views: 12.6ms | ActiveRecord: 56.9ms | Allocations: 8615)
+
+
+Started GET "/users/1" for ::1 at 2020-12-16 12:53:08 -0600
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers]   [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   ↳ app/controllers/users_controller.rb:12:in `show'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (2.22ms)
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.7ms | Allocations: 2324)
+
+
+Started PATCH "/users/1" for ::1 at 2020-12-16 12:53:20 -0600
+Processing by UsersController#update as */*
+  Parameters: {"picture"=>nil, "age"=>nil, "email"=>"ted@mail.com", "phone"=>nil, "skill"=>nil, "work"=>nil, "education"=>nil, "id"=>"1", "user"=>{"picture"=>nil, "age"=>nil, "email"=>"ted@mail.com", "phone"=>nil, "skill"=>nil, "work"=>nil, "education"=>nil}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:48:in `find_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with User (0.26ms)
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 0.9ms | Allocations: 2002)
+
+
