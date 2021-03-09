@@ -8,8 +8,7 @@ The inspiration behind the app was entering a new job field and getting ready to
 
 👉 Watch it <a href='https://www.youtube.com/watch?v=DumBp8l2R6A'>here!</a>
 
-- Screen Shot
-- gif of it working
+<img src="frontend/src/images/Portfoliu_Screenshot.png">
 
 # Prerequisites
 
