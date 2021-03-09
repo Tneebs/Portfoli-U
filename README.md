@@ -45,9 +45,9 @@ Before you begin, ensure that you have met the follow requirements:
 To contribute to Portfoli-U, follow these steps:
 
     1. Fork this repository.
-    2. Create a branch: ```git checkout -b <branch_name>```.
-    3. Make your changes and commit them:```git commit -m "<commit_message>"```
-    4. Push to the original branch:```git push origin <project_name>/<location>```
+    2. Create a branch: git checkout -b <branch_name>.
+    3. Make your changes and commit them: git commit -m "<commit_message>"
+    4. Push to the original branch: git push origin <project_name>/<location>
     5. Create the pull request.
 
 # Contributers
