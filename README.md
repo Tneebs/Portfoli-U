@@ -10,6 +10,8 @@ The inspiration behind the app was entering a new job field and getting ready to
 
 <img src="frontend/src/images/Portfoliu_Screenshot.png">
 
+<img src="https://j.gifs.com/wVPlE1.gif">
+
 # Prerequisites
 
 Before you begin, ensure that you have met the follow requirements:
@@ -32,12 +34,15 @@ Before you begin, ensure that you have met the follow requirements:
 
 - User Profile Showcased
 - Project Highlight
+- Project Organization / Management
 - Connection through Contributions
 
 # Built With
 
-- Ruby on Rails
-- JavaScript w/ React
+<img src="https://img.shields.io/badge/Ruby_on_Rails-CC0000?style=for-the-badge&logo=ruby-on-rails&logoColor=white" alt="rails_badge">
+<img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="react_badge">
+<img src="https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white" alt="npm_badge">
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css_badge">
 
 # Contributing to Portfoli-U
 
@@ -53,7 +58,7 @@ To contribute to Portfoli-U, follow these steps:
 
 Thanks to the follow who have contributed to this project:
 
-    - @Tneebs 💻
+    @Tneebs 💻
 
 # Contact
 
